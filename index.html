@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			#box1{
+				background-color: black;
+				opacity: 0.7;
+				position: absolute;
+				left: 1240px;
+				width: 241px;
+				height: 540px;
+			}
+			#this{
+				position: absolute;
+				display: inline-block;
+				left: 1250px;
+				top: 100px;
+				color: white;
+				font-size: 25px;
+			}
+			#this a{
+				color: white;
+				text-decoration: none;
+				display: inline;
+				top: 10px;
+			}
+			#outer{
+				width: 1493px;
+				height: 541px;
+				margin: 100px 0;
+				background-color: aquamarine;
+				padding: 10px 0;
+				position: relative;
+				overflow: hidden;
+			}
+			#imglist{
+				list-style: none;
+				/* width: 12000px; */
+				position: absolute;
+				left: 0px;
+			}
+			#imglist li{
+				float: left;
+				margin: 0 10px;
+				/* width: 1473px;
+				height: 541px; */
+			}
+			
+			
+				
+			#navdiv{
+				/*开启绝对定位*/
+				position: absolute;
+				display: block;
+				font-size: 15px;
+				left: 1250px;
+				top: 125px;
+			}
+			#this{
+				top: 100px;
+				display: inline;
+			}
+			#navdiv b{
+				display: inline;
+				color: white;
+				font-size: 25px;
+			}
+			#navdiv a{
+				/* float: left; */
+				opacity: 0.5;
+				display: inline;
+				width: 30px;
+				height: 30px;
+				margin: 15px 0;
+				line-height: 25px;
+				text-decoration: none;
+				color:white;
+			}
+			#navdiv a:hover{
+				color: orangered;
+				font-size:25px;
+				text-decoration: none;
+			}
+			#navdiv a:focus{
+				color: #FF4500;
+				}
+		</style>
+		<script type="text/javascript" src="tools.js"></script>
+		<script type="text/javascript">
+			window.onload=function(){
+				//获取宽度
+				var imglist = document.getElementById("imglist");
+				var imgArr=document.getElementsByTagName("img");
+				imglist.style.width=1493*imgArr.length+"px";
+				var imgdiv=document.getElementById("navdiv");
+				var outer=document.getElementById("outer");
+				var index=0;
+				var allA=document.getElementsByTagName("h");
+				for(var i=0;i<allA.length;i++){
+					allA[i].num=i;
+					allA[i].onmouseover=function(){
+						//关闭定时器
+						clearInterval(timer);
+						index=this.num;
+						// imglist.style.left=-1493*index+"px";
+						seta();
+						move(imglist, "left", -1493*index, 50,function(){
+							//动画执行完毕要开启定时器
+							autochange();
+						});
+						
+					};
+				}
+				function seta(){
+					if(index>=imgArr.length-1){
+						//将index设置为0
+						index=0;
+						imglist.style.left=0;
+					}
+				};
+				//开启自动切换图片
+				autochange();
+				var timer;
+				//创建一个函数用来开启自动切换图片
+				function autochange(){
+					//开启定时器来定时切换
+					timer=setInterval(function(){
+						//使索引自增
+						index++;
+						//判断index的值
+						index%=imgArr.length
+						//执行动画,切换图片
+						move(imglist, "left", -1493*index,20,function(){
+							seta();
+						});
+					},3000);
+				}
+			};
+			
+		</script>
+	</head>
+	<body>
+		<!-- 创建一个外部的div,来作为一个大容器-->
+		<div id="outer">
+		  <!--创建一个班ul用于存放图片-->
+		  <ul id="imglist">
+			  <li><a href="https://v.qq.com/x/cover/mzc00200r7lrqxw.html" target="_blank"><img src="1.png" /></a></li>
+			  <li><a href="https://v.qq.com/x/cover/vooy2m9hi5p1jqm.html" target="_blank"><img src="2.png" /></a></li>
+			  <li><a href="https://v.qq.com/x/cover/mzc00200i3gpva4.html" target="_blank"><img src="3.png" /></a></li>
+			  <li><a href="https://v.qq.com/x/cover/48pcff4vgkx11kh.html" target="_blank"><img src="4.png" /></a></li>
+			  <li><a href="https://v.qq.com/x/cover/j6b8z5urtg2wj5h.html" target="_blank"><img src="5.png" /></a></li>
+			  <li><a href="https://v.qq.com/x/cover/mzc00200hlfpghq.html" target="_blank"><img src="6.png" /></a></li>
+			  <li><a href="https://v.qq.com/x/cover/mzc00200z9th9sx.html" target="_blank"><img src="7.png" /></a></li>
+			  <li><a href="https://v.qq.com/x/cover/mzc00200vh9pu7a.html" target="_blank"><img src="8.png" /></a></li>
+			  <li><a href="https://v.qq.com/x/cover/mzc00200sncfxp0.html" target="_blank"><img src="9.png" /></a></li>
+			  <li><a href="https://v.qq.com/x/cover/mzc00200r7lrqxw.html" target="_blank"><img src="1.png" /></a></li>
+		  </ul>
+		  <!--创建导航按钮-->
+		  <div id="box1"></div>
+		  <div id="navdiv">
+			  
+			  <hr width="190px" />
+			  <P><b>重磅推荐</b></P>
+			  <p><h><a onmouseover="javascript:;" href="https://v.qq.com/x/cover/mzc00200r7lrqxw.html" target="_blank">肥龙过江</a></h></p>
+			  <p><h><a onmouseover="javascript:;" href="https://v.qq.com/x/cover/vooy2m9hi5p1jqm.html" target="_blank">三生三世枕上书</a></h></p>
+			  <p><h><a onmouseover="javascript:;" href="https://v.qq.com/x/cover/mzc00200i3gpva4.html" target="_blank">捍战</a></h></p>
+			  <p><h><a onmouseover="javascript:;" href="https://v.qq.com/x/cover/48pcff4vgkx11kh/k00337k2xlu.html" target="_blank">宠爱</a></h></p>
+			  <p><h><a onmouseover="javascript:;" href="https://v.qq.com/x/cover/j6b8z5urtg2wj5h.html" target="_blank">将夜2</a></h></p>
+			  <p><h><a onmouseover="javascript:;" href="https://v.qq.com/x/cover/mzc00200hlfpghq/d0033u0sg6z.html?" target="_blank">我家那闺女</a></h></p>
+			  <p><h><a onmouseover="javascript:;" href="https://v.qq.com/x/cover/mzc00200z9th9sx.html" target="_blank">蓬莱间</a></h></p>
+			  <p><h><a onmouseover="javascript:;" href="https://v.qq.com/x/cover/mzc00200vh9pu7a.html" target="_blank">吐槽大会</a></h></p>
+			  <p><h><a onmouseover="javascript:;" href="https://v.qq.com/x/cover/mzc00200y8u43dd.html" target="_blank">主持人大赛</a></h></p>
+		  </div>
+		  </div>
+		  
+		  <div id="this">
+		  			  <p><a href="https://v.qq.com/biu/u/history" target="_blank"><b>猜你会追</b></a></p>
+					  </div>
+	</body>
+</html>
